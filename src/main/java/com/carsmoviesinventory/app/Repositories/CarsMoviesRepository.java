@@ -13,6 +13,4 @@ public interface CarsMoviesRepository extends JpaRepository<CarsMoviesEntity, UU
 
     Page<CarsMoviesEntity> findAllByCarMovieNameContaining(String carMovieName, Pageable pageable);
 
-    @Override
-    Page<CarsMoviesEntity> findAll(Pageable pageable);
 }
