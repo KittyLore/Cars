@@ -86,4 +86,17 @@ public class CarsMoviesController{
         return carsMoviesService.deleteMovie(id);
     }
 
+    @GetMapping("/")
+    public ResponseEntity<?> getAllMoviesRoot(
+        @RequestParam(defaultValue = "0") int page,
+        @RequestParam(defaultValue = "5") int size,
+        @RequestParam(defaultValue = "carMovieName,asc") String[] sort) {
+        try {
+            Pageable pageable = PageRequest.of(page, size, Sort.by(parseSort(sort)));
+            return carsMoviesService.getAllMovies(pageable);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body("Invalid sorting direction. Use 'asc' or 'desc'.");
+        }
+    }
+
 }
