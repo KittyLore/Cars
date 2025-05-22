@@ -25,7 +25,7 @@ public class CarsMoviesController{
         this.carsMoviesService = carsMoviesService;
     }
 
-    @GetMapping
+    @GetMapping ("/")
     public ResponseEntity<?> getAllCarsMovies(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "5") int size,
